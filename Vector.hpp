@@ -42,7 +42,7 @@ public:
     Vector() {
 	// TODO: Implement this function.
         
-        std::cout << "Default Constructor" << std::endl; //DELETE THIS BEFORE SUBMITTING!
+        std::cout << "Default Constructor Called" << std::endl; //DELETE THIS BEFORE SUBMITTING!
         cap = initialCapacity;
         length = 0;
         elems = new T[cap];
@@ -56,7 +56,7 @@ public:
     Vector(const Vector &other) {
 	// TODO: Implement this function.
 
-        std::cout << "Copy Constructor" << std::endl; //DELETE THIS BEFORE SUBMITTING!
+        std::cout << "Copy Constructor Called" << std::endl; //DELETE THIS BEFORE SUBMITTING!
         cap = other.cap;
         length = other.length;
         elems = new T[cap];
@@ -73,6 +73,19 @@ public:
      */
     Vector &operator=(const Vector &other) {
 	// TODO: Implement this function.
+
+        std::cout << "overloaded operator called" << std::endl;
+
+       
+        cap = other.cap;
+        length = other.length;
+
+        for (int i = 0; i < other.length; ++i){
+            elems[i] = other.elems[i];
+        }
+
+        return *this;
+
     }
 
     /**
@@ -82,6 +95,7 @@ public:
 	// TODO: Implement this function.
 
         std::cout << "Destructor" << std::endl; //DELETE THIS BEFORE SUBMITTING!
+    
         delete [] elems;
     }
 
@@ -95,7 +109,7 @@ public:
     iterator begin() {
 	// TODO: Implement this function.
 
-        return elems[0];
+        return this.elems[0];
     }
 
     /**
@@ -105,7 +119,7 @@ public:
     iterator end() {
 	// TODO: Implement this function.
 
-        return elems[length];
+        return this.elems[length];
     }
 
     /**
@@ -115,7 +129,7 @@ public:
     constIterator begin() const {
 	// TODO: Implement this function.
 
-        return elems;
+        return this.elems;
     }
 
     /**
@@ -134,6 +148,9 @@ public:
      */
     std::size_t capacity() const {
 	// TODO: Implement this function.
+
+        return this.cap;
+
     }
 
     /**
@@ -145,8 +162,8 @@ public:
 
         int k = 0;
 
-        for (int i = 0; i < length; ++i){
-            k++;
+        for (int i = 0; i < this->length; ++i){
+            ++k;
         }
 
         return k;
@@ -161,10 +178,25 @@ public:
 	// TODO: Implement this function.
 
         if (length < cap) {
-            elems[length++] = *elems;
+            elems[length++] = elem;
         }
 
         //TODO: Handle case when length == capacity.
+        else {
+            int Oldcap = cap;
+            cap *= 2;
+            T *newElems;
+            newElems = new T[cap];
+
+            int num = 0;
+            for (int i = 0; i < Oldcap; i++){
+            newElems[i] = elems[i];
+            num++;
+            }
+
+            newElems[num] = elem;
+           
+        }
     }
 
     /**
@@ -238,6 +270,18 @@ public:
      */
     T &at(std::size_t pos) {
 	// TODO: Implement this function.
+
+        try {
+            if (pos >= this.length)
+                throw std::out_of_range();
+            
+
+            return *elems[pos];
+
+        }
+        catch (std::exception e) {
+            std::cout << "out of range" << std::endl;
+        }
     }
 
     /**
@@ -248,6 +292,18 @@ public:
      */
     const T &at(std::size_t pos) const {
 	// TODO: Implement this function.
+
+      try {
+            if (pos >= this.length)
+                throw std::out_of_range();
+            
+
+            return *elems[pos];
+
+        }
+        catch (std::exception e) {
+            std::cout << "out of range" << std::endl;
+        }
     }
 
     /**
@@ -282,6 +338,13 @@ public:
 	// TODO: Implement this function.
 
         //remove element at pos
+
+        if (pos = this.length)
+            return end();
+
+        
+        ~elems[pos];
+        return *elems[pos+1];
 
         
     }
