@@ -64,6 +64,16 @@ int main() {
     std::cout << "new capacity for v1 should be 8: " << v1.capacity() << std::endl;
     std::cout << std::endl;
 
-    // std::cout << "access int at index v1[1] should be 2: " << v1.at(1) << std::endl;
+    std::cout << "access int at index v1[1] should be 2: " << v1.at(1) << std::endl;
+    std::cout << "access int at index v2[0] should be 4: " << v2.at(0) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "v1 should not be empty (i.e. return 0): " << v1.empty() << std::endl;
+    std::cout << std::endl;
+
+    v1.clear();
+    std::cout << "capacity should still be 8: " << v1.capacity() << " - and it should return empty (i.e. return 1): " << v1.empty() << std::endl;
+    std::cout << std::endl;
+
     return 0;
 }
