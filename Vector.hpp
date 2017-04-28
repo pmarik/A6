@@ -273,10 +273,10 @@ public:
 
         try {
             if (pos >= this->length)
-                throw std::out_of_range();
+                throw std::out_of_range("error");
             
 
-            return *elems[pos];
+            return elems[pos];
 
         }
         catch (std::exception e) {
@@ -295,7 +295,7 @@ public:
 
       try {
             if (pos >= this.length)
-                throw std::out_of_range();
+                throw std::out_of_range("error");
             
 
             return *elems[pos];
@@ -314,6 +314,16 @@ public:
 	// TODO: Implement this function.
 
         return (elems != NULL ? false : true);
+
+        /** bool ans = false; 
+        for (int i = 0; i < length; ++i){
+            if (elems[*i] == NULL)
+                ans = true;
+        }
+        
+        return ans;
+        */
+
     }
 
     /**
@@ -323,8 +333,10 @@ public:
     void clear() {
 	// TODO: Implement this function.
 
-
-        elems.reset();
+        for (int i = 0; i < length; ++i){
+            ~elems[i];
+        }
+        
         length = 0;
     }
 
