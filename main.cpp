@@ -50,6 +50,20 @@ int main() {
     std::cout << "v1 should have one less element: " << std::endl;
     v1.popBack();
     printVector(v1);
+    std::cout << std::endl;
 
+    std::cout << "v1 should have size 2: " << v1.size() << std::endl;
+    std::cout << "v2 should have size 3: " << v2.size() << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "both capacities should be 4: " << v1.capacity() << std::endl;
+    std::cout << v2.capacity() << std::endl;
+    std::cout << std::endl;
+
+    v1.reserve(8);
+    std::cout << "new capacity for v1 should be 8: " << v1.capacity() << std::endl;
+    std::cout << std::endl;
+
+    // std::cout << "access int at index v1[1] should be 2: " << v1.at(1) << std::endl;
     return 0;
 }
