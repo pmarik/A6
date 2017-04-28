@@ -129,7 +129,7 @@ public:
     constIterator begin() const {
 	// TODO: Implement this function.
 
-        return this.elems;
+        return this->elems;
     }
 
     /**
@@ -149,7 +149,7 @@ public:
     std::size_t capacity() const {
 	// TODO: Implement this function.
 
-        return this.cap;
+        return this->cap;
 
     }
 
@@ -272,7 +272,7 @@ public:
 	// TODO: Implement this function.
 
         try {
-            if (pos >= this.length)
+            if (pos >= this->length)
                 throw std::out_of_range();
             
 
